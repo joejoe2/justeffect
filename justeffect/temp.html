@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+	  body{background: gray}
+	  *{color: white}
+ </style>
+</head>
+<body>
+<h1 color="white" align="center" id="h">member login succeed! welcome to the Anti-McDownald gym online center !</h1>
+<br>
+<h1 color="white" align="center" id="s">you will be redirect to your personal page automatically in 3 seconds</h1>
+<h1 color="white" align="center">if the page can not redirect by itself , please click</h1>
+<div align="center"><a href="timeregister.html" id="a">personal page</a></div>
+</body>
+<script>
+	let url=new URL(location.href);
+	let name=url.searchParams.get("id");
+	document.getElementById("h").textContent="member  "+" "+name+" "+"  login success! welcome to the Anti-McDownald gym online center !";
+	var t=3;
+	setInterval(function(){
+		t--;
+		document.getElementById("s").textContent="you will be redirect to your personal page automatically in "+t+" seconds";
+	},1000);
+	setTimeout(function(){
+		window.location="timeregister.html?id="+name;
+	},3000);
+</script>
+</html>

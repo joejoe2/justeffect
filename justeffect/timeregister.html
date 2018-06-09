@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+ <meta charset="utf-8">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ <style>
+	 .d div{ font-size: 150%;background: gray;width: 70px;float: left;margin: 1px}
+	 .d div:hover{margin: 3px;cursor: pointer }
+ </style>
+</head>
+<body>
+<nav align="center" style="background: red;color: yellow;height:50px;font-size: 200%">Anti-McDonald online center</nav>
+	<br>
+<p style="font-size: 150%" id="id">member id:</p>
+<p style="font-size: 150%">membership status:registered</p>
+	<br>
+	<h1>Lessons Schedule 2018 July</h1>
+<h2 style="width: 700px">Su&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Mo&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Tu&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp We&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Th&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Fr&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Sa</h2>
+	<div class="d">
+    <div id="1">1</div>  
+	<div id="2">2</div>
+	<div id="3">3</div>
+	<div id="4">4</div>
+	<div id="5">5</div>
+	<div id="6">6</div>
+	<div id="7">7</div><div style="clear: left;width: 0"></div>
+	<div id="8">8</div>  
+	<div id="9">9</div>
+	<div id="10">10</div>
+	<div id="11">11</div>
+	<div id="12">12</div>
+	<div id="13">13</div>
+	<div id="14">14</div><div style="clear: left;width: 0"></div>
+	<div id="15">15</div>  
+	<div id="16">16</div>
+	<div id="17">17</div>
+	<div id="18">18</div>
+	<div id="19">19</div>
+	<div id="20">20</div>
+	<div id="21">21</div><div style="clear: left;width: 0"></div>
+	<div id="22">22</div>  
+	<div id="23">23</div>
+	<div id="24">24</div>
+	<div id="25">25</div>
+	<div id="26">26</div>
+	<div id="27">27</div>
+	<div id="28">28</div><div style="clear: left;width: 0"></div>
+	<div id="29">29</div>
+	<div id="30">30</div>
+	<div id="31">31</div><div style="clear: left;width: 0"></div>
+	</div>
+	<p style="clear: left;">Tip:You can change the time and courses content before you take the lessons.</p>
+<div id="d0" style="margin:0">
+	<h1 align="center">choose a class</h1>
+	<h2 id="date">7/1</h2><br>
+	<input type="radio" name="opt" value="1">1
+	<input type="radio" name="opt" value="2">2
+	<input type="radio" name="opt" value="3">3
+	<input type="radio" name="opt" value="4">4
+	<input type="radio" name="opt" value="5">5
+	<br>
+	<input type="button" value="decide" id="decide">
+</div>
+</body>
+<script>
+	let url=new URL(location.href);
+	let name=url.searchParams.get("id");
+	document.getElementById("id").textContent="member id= "+name;
+	$(function(){
+		$("#d0").dialog({
+			autoOpen:false,
+			width:500,   
+			height:800,
+			focus:true,
+			show:{
+			     effect:"fade",
+			     duration:500
+		        },
+			hide:{
+				effect:"fade",
+				duration:500
+			},
+		});
+	});
+	var target=1;
+	var a=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+	for(let i=1;i<=31;++i){
+		
+		document.getElementById(i).addEventListener("click",function(){
+			$("#d0").dialog("open");target=i;
+			if(a[i-1]!=0){
+			document.getElementsByName("opt").item(a[i-1]).checked=true;}
+			document.getElementById("date").textContent="7/"+i;
+		});
+		document.getElementById("decide").addEventListener("click",function(){
+		   for(let j=0;j<5;++j){
+			   if(document.getElementsByName("opt").item(j).checked==true){
+				   a[target-1]=j;
+				   break;
+			   }
+		   }
+			$("#d0").dialog("close");
+		});
+	}
+	</script>
+</html>
