@@ -62,6 +62,7 @@
 	<input type="radio" name="opt" value="5">5
 	<br>
 	<input type="button" value="decide" id="decide">
+	<input type="button" value="cancel the class" id="cancel">
 </div>
 </body>
 <script>
@@ -90,19 +91,26 @@
 		
 		document.getElementById(i).addEventListener("click",function(){
 			$("#d0").dialog("open");target=i;
-			if(a[i-1]!=0){
-			document.getElementsByName("opt").item(a[i-1]).checked=true;}
+			document.getElementsByName("opt").item(a[i-1]).checked=true;
+			
 			document.getElementById("date").textContent="7/"+i;
 		});
-		document.getElementById("decide").addEventListener("click",function(){
+		
+	}
+	document.getElementById("decide").addEventListener("click",function(){
 		   for(let j=0;j<5;++j){
 			   if(document.getElementsByName("opt").item(j).checked==true){
 				   a[target-1]=j;
 				   break;
 			   }
 		   }
+			document.getElementById(target).style.background="blue";
 			$("#d0").dialog("close");
 		});
-	}
+	document.getElementById("cancel").addEventListener("click",function(){
+		a[target-1]=0;
+		document.getElementById(target).style.background="gray";
+		$("#d0").dialog("close");
+	});
 	</script>
 </html>
